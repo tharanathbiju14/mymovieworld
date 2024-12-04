@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetchTMDB from './tmbdfetch';
-import './MovieDetails.css';
+import './moviedetails.css';
 import SidebarDrawer from './drawer';
 import { CircularProgress } from '@mui/material';
 
