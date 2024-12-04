@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #0C0C0C;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.bar{
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    /* align-items: center; */
+    color: #ffffff;
+    display: flex;
+    gap: 50px;
+}
+
+
+.navitems {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.navitems input {
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.navitems button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    /* background-color: #ffffff; */
+    /* color: #000000; */
+    border: none;
+    cursor: pointer;
+}
+
+.navitems button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+
+.carouselhome{
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.carouselhome p {
+    color: #ffffff;
+}
+
+.trending{
+    font-size: 30px;
+    margin-left: 70px;
+    margin-top: 20px;
+    
+}
+
+
+.carouselcomp{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
