@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import useFetchTMDB from "./tmbdfetch";
-import "./Carousel.css";
+import "./carousel.css";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material'; 
