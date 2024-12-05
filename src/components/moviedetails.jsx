@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetchTMDB from './tmbdfetch';
-import './MovieDetails.css'; // Update this file to match the Netflix style
+import './moviedetails.css'; // Update this file to match the Netflix style
 import SidebarDrawer from './drawer';
 import { CircularProgress } from '@mui/material';
 
