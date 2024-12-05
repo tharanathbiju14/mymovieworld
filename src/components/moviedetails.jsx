@@ -9,6 +9,16 @@ export default function MovieDetails() {
   const { id } = useParams();
   const { data, loading, error, trailer, providers } = useFetchTMDB(`/movie/${id}`, { language: 'en-US' });
 
+    const handlePlayClick = () => {
+    if (providers && providers.length > 0) {
+      const firstProvider = providers[0]; // Pick the first provider for simplicity
+      const providerLink = `https://www.${firstProvider.provider_name.toLowerCase().replace(/\s+/g, '')}.com`; // Adjust URL logic based on API response
+      window.open(providerLink, '_blank');
+    } else {
+      alert("No streaming providers available for this movie.");
+    }
+  };
+
   console.log("Movie Data:", data);
   console.log("Trailer Data:", trailer);
   console.log("Providers Data:", providers);
@@ -54,7 +64,7 @@ export default function MovieDetails() {
             </div>
             <p className="movie-overview" style={{fontFamily:"'Montserrat', sans-serif",fontSize:"20px"}}>{data.overview}</p>
             <div className="movie-buttons">
-              <button className="play-button" style={{fontFamily:"'Montserrat', sans-serif"}}>▶ Play</button>
+              <button className="play-button" onClick={handlePlayClick} style={{fontFamily:"'Montserrat', sans-serif"}}>▶ Play</button>
               {data.homepage && (
                 <a
                   href={data.homepage}
