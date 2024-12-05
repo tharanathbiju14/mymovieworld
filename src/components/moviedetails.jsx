@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetchTMDB from './tmbdfetch';
-import './moviedetails.css';
+import './MovieDetails.css'; // Update this file to match the Netflix style
 import SidebarDrawer from './drawer';
 import { CircularProgress } from '@mui/material';
 
@@ -25,57 +25,65 @@ export default function MovieDetails() {
   if (!data) return <p>No details found.</p>;
 
   return (
-    <div
-      className="movie-details-container"
-      style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
-      }}
-    >
+    <div className="movie-details-container">
       <SidebarDrawer />
-      <div className="movie-details-card">
-        <img
-          src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
-          alt={data.title}
-          className="movie-poster"
-        />
-        <div className="movie-details-content">
-          <div>
-            <h2>{data.title}</h2>
-            <p className="movie-overview">{data.overview}</p>
-            <div className="movie-rating">
-              <span>⭐ {data.vote_average.toFixed(1)}/10</span>
-              <span>({data.vote_count} votes)</span>
-            </div>
-            <p className="movie-runtime">Runtime: {data.runtime} minutes</p>
-            <p>Release Date: {data.release_date}</p>
+      <div
+        className="movie-background"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
+        }}
+      >
+        <div className="movie-overlay"></div>
+        <div className="movie-content">
+          <div className="movie-poster-wrapper">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+              alt={data.title}
+              className="movie-poster"
+              style={{width:"400px",height:"500px"}}
+            />
           </div>
-          {data.homepage && (
-            <a href={data.homepage} target="_blank" rel="noopener noreferrer">
-              Visit Official Website
-            </a>
-          )}
-
-          {trailer ? (
-            <div className="movie-trailer">
-              <h3>Watch Trailer</h3>
-              <iframe
-                title="movie trailer"
-                width="100%"
-                height="400"
-                src={`https://www.youtube.com/embed/${trailer.key}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+          <SidebarDrawer/>
+          <div className="movie-details">
+            <h1 style={{fontFamily:"'Montserrat', sans-serif"}}>{data.title}</h1>
+            <p className="movie-metadata" style={{fontFamily:"'Montserrat', sans-serif"}}>
+              {data.release_date.split('-')[0]} | {data.runtime} mins | {data.adult ? '18+' : 'PG-13'}
+            </p>
+            <div className="movie-rating" style={{fontFamily:"'Montserrat', sans-serif"}}>
+              ⭐ {data.vote_average.toFixed(1)} / 10
             </div>
-          ) : (
-            <p>No trailer available</p>
-          )}
-
-          <div className="streaming-providers">
-            <h3>Streaming Providers</h3>
+            <p className="movie-overview" style={{fontFamily:"'Montserrat', sans-serif",fontSize:"20px"}}>{data.overview}</p>
+            <div className="movie-buttons">
+              <button className="play-button" style={{fontFamily:"'Montserrat', sans-serif"}}>▶ Play</button>
+              {data.homepage && (
+                <a
+                  href={data.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="more-info-button"
+                  style={{fontFamily:"'Montserrat', sans-serif"}}
+                >
+                  More Info
+                </a>
+              )}
+            </div>
+            {trailer && (
+              <div className="movie-trailer">
+                <iframe
+                  title="movie trailer"
+                  width="100%"
+                  height="300"
+                  src={`https://www.youtube.com/embed/${trailer.key}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
+            <div className="streaming-providers">
+            <h2 style={{fontFamily:"'Montserrat', sans-serif"}} >Streaming Providers</h2>
             {providers.length > 0 ? (
-              <ul className="providers-list">
+              <ul className="providers-list" style={{marginTop:"20px"}}>
                 {providers.map(provider => (
                   
                   <li key={provider.provider_id}>
@@ -91,6 +99,7 @@ export default function MovieDetails() {
             ) : (
               <p>No streaming providers available</p>
             )}
+          </div>
           </div>
         </div>
       </div>
