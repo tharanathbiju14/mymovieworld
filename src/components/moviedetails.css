@@ -47,7 +47,7 @@
 }
 
 .movie-poster {
-   position: fixed;
+/*    position: fixed; */
   max-width: 300px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
