@@ -50,7 +50,7 @@ export default function MovieDetails() {
               src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
               alt={data.title}
               className="movie-poster"
-              style={{width:"400px",height:"600px",position:"fixed"}}
+              style={{width:"500px",height:"600px",position:"fixed"}}
             />
           </div>
           <SidebarDrawer/>
